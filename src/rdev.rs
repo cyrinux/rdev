@@ -2,6 +2,7 @@
 use serde::{Deserialize, Serialize};
 use std::time::SystemTime;
 use std::{fmt, fmt::Display};
+use strum_macros::EnumString;
 
 // /// Callback type to send to listen function.
 // pub type Callback = dyn FnMut(Event) -> ();
@@ -97,7 +98,7 @@ impl std::error::Error for SimulateError {}
 /// a different value too.
 /// Careful, on Windows KpReturn does not exist, it' s strictly equivalent to Return, also Keypad keys
 /// get modified if NumLock is Off and ARE pagedown and so on.
-#[derive(Debug, Copy, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Copy, Clone, PartialEq, Eq, Hash, EnumString)]
 #[cfg_attr(feature = "serialize", derive(Serialize, Deserialize))]
 pub enum Key {
     /// Alt key on Linux and Windows (option key on macOS)
